@@ -1,0 +1,13 @@
+var jwt = require('jsonwebtoken');
+var secret = require('../config').secret;
+
+module.exports = {
+  generateToken: function(options, callback) {
+    jwt.sign(options, secret, {
+      expiresIn: '2 days',
+    }, callback);
+  },
+  verifyToken: function(token) {
+    return jwt.verify(token, secret);
+  }
+};
