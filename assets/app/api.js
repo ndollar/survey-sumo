@@ -3,45 +3,45 @@ import { getToken } from 'app/helpers/auth';
 
 const doPost = (url, data) => {
   return fetch(url, {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(data),
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     },
-    credentials: "same-origin"
+    credentials: 'same-origin'
   });
 }
 
 const doAuthPost = (url, data) => {
   return fetch(url, {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(data),
     headers: {
-      "Content-Type": "application/json",
-      "Authorization": `${getToken()}`,
+      'Content-Type': 'application/json',
+      'Authorization': `${getToken()}`,
     },
-    credentials: "same-origin"
+    credentials: 'same-origin'
   });
 }
 
 const doGet = (url) => {
   return fetch(url, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     },
-    credentials: "same-origin"
+    credentials: 'same-origin'
   });
 }
 
 const doAuthGet = (url) => {
   return fetch(url, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
-      "Authorization": `${getToken()}`,
+      'Content-Type': 'application/json',
+      'Authorization': `${getToken()}`,
     },
-    credentials: "same-origin"
+    credentials: 'same-origin'
   });
 }
 
@@ -71,14 +71,3 @@ export const Auth = {
     return doPost('/api/login', { username, password });
   },
 };
-
-/*
-.then(function(response) {
-  response.status     //=> number 100–599
-  response.statusText //=> String
-  response.headers    //=> Headers
-  response.url        //=> String
-}, function(error) {
-  console.log('ERROR: ', error);
-})
-*/

@@ -3,7 +3,6 @@ import Header from 'app/components/Header';
 import NewQuestionModal from 'app/components/NewQuestionModal';
 import AdminResponses from 'app/components/AdminResponses';
 
-
 const Admin = () => (
   <main>
     <Header />

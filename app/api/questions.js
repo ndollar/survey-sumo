@@ -1,22 +1,58 @@
-module.exports = function(models) {
+var logger = require('winston');
+var errorResponse = require('./error-response');
 
-  var create = function(options) {
-    return models.Question.create({
-      text: options.text
+module.exports = function (models) {
+  var choicesWithQuestionId = function (questionId, choices) {
+    return choices.map(function (choice) {
+      return {
+        QuestionId: questionId,
+        text: choice.text
+      };
     });
   };
 
-  var findAll = function() {
-    return models.Question.findAll({
+  var create = function (request, response) {
+    var text = request.body.text;
+    var choices = request.body.choices;
+
+    models.Question.create({ text: text })
+    .then(function (question) {
+      models.Choice.bulkCreate(
+        choicesWithQuestionId(question.id, choices)
+      ).then(function () {
+        response.json({
+          id: question.id,
+          text: question.text,
+          Choices: choices
+        });
+      }).catch(function (err) {
+        logger.warn('Error saving choices[%s] for question[%s]',
+          choices, question, err);
+        errorResponse.internalServerError(response);
+      });
+    }).catch(function (err) {
+      logger.warn('Error saving question[%s]', request.body, err);
+      errorResponse.internalServerError(response);
+    });
+  };
+
+  var findAll = function (request, response) {
+    models.Question.findAll({
       include: [{
         model: models.Choice,
         required: true
       }]
+    })
+    .then(function (questions) {
+      response.json(questions);
+    }).catch(function (err) {
+      logger.warn('Error finding questions', err);
+      errorResponse.internalServerError(response);
     });
   };
 
-  var allWithAnswers = function() {
-    return models.Question.findAll({
+  var allWithAnswers = function (request, response) {
+    models.Question.findAll({
       include: [{
         model: models.Choice,
         required: true,
@@ -25,19 +61,19 @@ module.exports = function(models) {
           required: true
         }]
       }]
-    });
-  };
-
-  var findById = function(id) {
-    return models.Question.findById(id, {
-      include: [models.Choice]
+    })
+    .then(function (questions) {
+      response.json(questions);
+    }).catch(function (err) {
+      logger.warn('Error finding questions', err);
+      errorResponse.internalServerError(response);
     });
   };
 
   return {
     create: create,
+    choicesWithQuestionId: choicesWithQuestionId,
     findAll: findAll,
-    allWithAnswers: allWithAnswers,
-    findById: findById
+    allWithAnswers: allWithAnswers
   };
 };
