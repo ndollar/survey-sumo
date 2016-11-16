@@ -9,10 +9,10 @@ const mapDispatchToProps = (dispatch) => ({
   onSubmit(email, password) {
     Auth.login(email, password)
       .then(response => {
-          if (!response.ok) {
-              throw Error(response.statusText);
-          }
-          return response;
+        if (!response.ok) {
+          throw Error(response.statusText);
+        }
+        return response;
       })
       .then(response => response.json())
       .then((json) => {
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
         browserHistory.push('/admin');
       })
       .catch(error => {
-        dispatch(authError(error))
+        dispatch(authError(error));
       });
   },
 });
@@ -39,13 +39,25 @@ const SignInForm = ({ onSubmit }) => {
       <div className="form-group">
         <label htmlFor="inputEmail3" className="col-sm-2 control-label">Email</label>
         <div className="col-sm-10">
-          <input ref={node => (email = node)} type="email" className="form-control" id="inputEmail3" placeholder="Email" />
+          <input
+            ref={node => (email = node)}
+            type="email"
+            className="form-control"
+            id="inputEmail3"
+            placeholder="Email"
+          />
         </div>
       </div>
       <div className="form-group">
         <label htmlFor="inputPassword3" className="col-sm-2 control-label">Password</label>
         <div className="col-sm-10">
-          <input ref={node => (password = node)} type="password" className="form-control" id="inputPassword3" placeholder="Password" />
+          <input
+            ref={node => (password = node)}
+            type="password"
+            className="form-control"
+            id="inputPassword3"
+            placeholder="Password"
+          />
         </div>
       </div>
       <div className="form-group">

@@ -2,8 +2,8 @@ const initialState = {
   allQuestions: [],
   allQuestionsById: [],
   availableQuestionIds: [],
-  randomQuestion: {},
-  initialized: false
+  randomQuestion: null,
+  initialized: false,
 };
 
 const buildAllQuestionsById = (allQuestions) => {

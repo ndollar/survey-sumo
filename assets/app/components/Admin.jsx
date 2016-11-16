@@ -3,12 +3,15 @@ import Header from 'app/components/Header';
 import NewQuestionModal from 'app/components/NewQuestionModal';
 import AdminResponses from 'app/components/AdminResponses';
 
+require('app/stylesheets/components/admin.css');
+
 const Admin = () => (
   <main>
     <Header />
-    <h4>Admin</h4>
     <div>
-      <NewQuestionModal />
+      <div className="new-question-wrapper">
+        <NewQuestionModal />
+      </div>
       <AdminResponses />
     </div>
   </main>

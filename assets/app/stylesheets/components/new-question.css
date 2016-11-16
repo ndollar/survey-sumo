@@ -1,0 +1,17 @@
+.new-question-input {
+  margin: 12px 0;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.51);
+}
+
+.new-question-input input {
+  font-size: 24px;
+  height: 40px;
+}
+
+.add-choice-wrapper {
+  margin-bottom: 8px;
+}
+.question-choices {
+  padding-left: 2%;
+}

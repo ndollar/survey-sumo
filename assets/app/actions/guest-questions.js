@@ -1,4 +1,3 @@
-
 const setGuestQuestions = guestQuestions => ({
   type: 'SET_GUEST_QUESTIONS',
   guestQuestions,

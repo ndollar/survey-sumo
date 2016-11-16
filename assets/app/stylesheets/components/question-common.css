@@ -1,0 +1,25 @@
+.question-text {
+  font-size: 30px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.51);
+}
+
+.question-choice {
+  margin: 8px 0;
+  padding-left: 8px;
+  font-size: 18px;
+}
+
+.choice-text {
+  font-weight: 200;
+  font-size: 22px;
+}
+.question-choices {
+  min-height: 120px
+}
+
+.question {
+  padding: 20px;
+  -webkit-box-shadow: 10px 10px 19px 0px rgba(0, 0, 0, 0.27);
+  -moz-box-shadow: 10px 10px 19px 0px rgba(0, 0, 0, 0.27);
+  box-shadow: 10px 10px 19px 0px rgba(0, 0, 0, 0.27);
+}

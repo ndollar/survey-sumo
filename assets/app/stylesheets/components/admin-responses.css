@@ -1,0 +1,12 @@
+
+.admin-responses {
+  width: 500px;
+  margin: auto;
+}
+
+.response-count {
+  font-size: 80%;
+  font-weight: 500;
+  padding: 8px;
+  color: rgba(71, 128, 94, 0.88);
+}

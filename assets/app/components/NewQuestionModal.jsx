@@ -1,39 +1,47 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import NewQuestion from 'app/components/NewQuestion';
 import { saveQuestion } from 'app/actions/new-question';
 import { Question } from 'app/api';
 
-const mapStateToProps = state => {
-  return {
-    newQuestion: state.newQuestion
-  };
-};
+const mapStateToProps = state => ({ newQuestion: state.newQuestion });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    saveQuestion: newQuestion => {
-      return (e) => {
-        const action = saveQuestion();
-        dispatch(action);
-        // TODO: Handle response
-        Question.create(newQuestion)
-          .then();
-      };
+const mapDispatchToProps = dispatch => ({
+  onClickSaveQuestion: newQuestion => (
+    () => {
+      const action = saveQuestion();
+      dispatch(action);
+      // TODO: Handle response
+      Question.create(newQuestion)
+        .then();
     }
-  };
-};
+  ),
+});
 
-const NewQuestionModal = ({ newQuestion, saveQuestion }) => (
+const NewQuestionModal = ({ newQuestion, onClickSaveQuestion }) => (
   <div className="new-question-container">
-    <button type="button" className="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-       New Question
-    </button>
-    <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <button
+      type="button"
+      className="btn btn-primary btn-lg"
+      data-toggle="modal"
+      data-target="#myModal"
+    >New Question</button>
+    <div
+      className="modal fade"
+      id="myModal"
+      tabIndex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+    >
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button
+              type="button"
+              className="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            ><span aria-hidden="true">&times;</span></button>
             <h4 className="modal-title" id="myModalLabel">New Question</h4>
           </div>
           <div className="modal-body">
@@ -44,13 +52,24 @@ const NewQuestionModal = ({ newQuestion, saveQuestion }) => (
             <button
               type="button"
               className="btn btn-primary"
-              onClick={saveQuestion(newQuestion)}
-                data-dismiss="modal">Save</button>
+              onClick={onClickSaveQuestion(newQuestion)}
+              data-dismiss="modal"
+            >Save</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 );
+
+NewQuestionModal.propTypes = {
+  newQuestion: PropTypes.shape({
+    choices: PropTypes.arrayOf(PropTypes.shape({
+      text: PropTypes.string.isRequired,
+    })),
+    text: PropTypes.string.isRequired,
+  }).isRequired,
+  onClickSaveQuestion: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewQuestionModal);

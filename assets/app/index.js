@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux';
 import createLogger from 'redux-logger';
 
 import reducers from 'app/reducers';
-import App from 'app/components/App';
+import GuestApp from 'app/components/GuestApp';
 import Admin from 'app/components/Admin';
 import SignIn from 'app/components/SignIn';
 import initializeState from 'app/helpers/initialize';
@@ -24,7 +24,7 @@ initializeState(store);
 render(
   <Provider store={store}>
     <Router history={browserHistory}>
-      <Route path="/" component={App} />
+      <Route path="/" component={GuestApp} />
       <Route path="/admin" component={Admin} onEnter={authRoute} />
       <Route path="/signin" component={SignIn} />
     </Router>

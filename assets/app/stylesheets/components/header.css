@@ -1,10 +1,17 @@
 header {
-  height: 50px;
+  min-height: 50px;
+  background: rgba(128, 128, 128, 0.35);
+  padding-bottom: 16px;
 }
 
 #admin-link {
   display: inline-block;
   float: right;
-  border: 1px solid black;
   padding: 12px;
+  font-size: 18px;
+}
+
+#header-logo-wrapper {
+  width: 300px;
+  margin: auto;
 }

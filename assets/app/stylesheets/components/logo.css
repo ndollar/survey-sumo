@@ -1,0 +1,12 @@
+.survey-sumo-logo {
+  display: inline-block;
+  text-align: center;
+}
+
+.survey-sumo-logo a {
+  text-decoration: none;
+}
+.survey-sumo-name {
+  font-size: 50px;
+  display: block;
+}

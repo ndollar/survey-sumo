@@ -56,10 +56,7 @@ module.exports = function (models) {
       include: [{
         model: models.Choice,
         required: true,
-        include: [{
-          model: models.Answer,
-          required: true
-        }]
+        include: [models.Answer]
       }]
     })
     .then(function (questions) {
