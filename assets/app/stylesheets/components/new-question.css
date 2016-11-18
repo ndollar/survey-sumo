@@ -15,3 +15,9 @@
 .question-choices {
   padding-left: 2%;
 }
+
+.choices-needed {
+  font-size: 40px;
+  color: rgba(128, 128, 128, 0.46);
+  text-align: center;
+}

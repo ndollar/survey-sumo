@@ -57,7 +57,8 @@ module.exports = function (models) {
         model: models.Choice,
         required: true,
         include: [models.Answer]
-      }]
+      }],
+      order: 'updatedAt DESC'
     })
     .then(function (questions) {
       response.json(questions);

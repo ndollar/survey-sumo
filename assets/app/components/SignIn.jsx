@@ -5,7 +5,6 @@ import SignInForm from 'app/components/SignInForm';
 
 const Admin = () => (
   <main>
-    <Header />
     <SignInForm />
   </main>
 );

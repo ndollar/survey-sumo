@@ -31,10 +31,3 @@ render(
   </Provider>,
   document.getElementById('app')
 );
-
-/*
-TODO:
-- Lint
-- Download and bundle dependencies like pure-grids and jquery
-- Combine initialization requets, maybe initialze in bundle itself
-*/

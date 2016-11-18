@@ -14,11 +14,15 @@
   font-size: 22px;
 }
 .question-choices {
-  min-height: 120px
+  min-height: 120px;
+  margin-top: 12px;
 }
 
 .question {
+  margin: 20px;
   padding: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 6px;
   -webkit-box-shadow: 10px 10px 19px 0px rgba(0, 0, 0, 0.27);
   -moz-box-shadow: 10px 10px 19px 0px rgba(0, 0, 0, 0.27);
   box-shadow: 10px 10px 19px 0px rgba(0, 0, 0, 0.27);

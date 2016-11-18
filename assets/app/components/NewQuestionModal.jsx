@@ -1,24 +1,7 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import NewQuestion from 'app/components/NewQuestion';
-import { saveQuestion } from 'app/actions/new-question';
-import { Question } from 'app/api';
+import React from 'react';
+import NewQuestionContext from 'app/components/NewQuestionContent';
 
-const mapStateToProps = state => ({ newQuestion: state.newQuestion });
-
-const mapDispatchToProps = dispatch => ({
-  onClickSaveQuestion: newQuestion => (
-    () => {
-      const action = saveQuestion();
-      dispatch(action);
-      // TODO: Handle response
-      Question.create(newQuestion)
-        .then();
-    }
-  ),
-});
-
-const NewQuestionModal = ({ newQuestion, onClickSaveQuestion }) => (
+const NewQuestionModal = () => (
   <div className="new-question-container">
     <button
       type="button"
@@ -44,32 +27,11 @@ const NewQuestionModal = ({ newQuestion, onClickSaveQuestion }) => (
             ><span aria-hidden="true">&times;</span></button>
             <h4 className="modal-title" id="myModalLabel">New Question</h4>
           </div>
-          <div className="modal-body">
-            <NewQuestion />
-          </div>
-          <div className="modal-footer">
-            <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={onClickSaveQuestion(newQuestion)}
-              data-dismiss="modal"
-            >Save</button>
-          </div>
+          <NewQuestionContext />
         </div>
       </div>
     </div>
   </div>
 );
 
-NewQuestionModal.propTypes = {
-  newQuestion: PropTypes.shape({
-    choices: PropTypes.arrayOf(PropTypes.shape({
-      text: PropTypes.string.isRequired,
-    })),
-    text: PropTypes.string.isRequired,
-  }).isRequired,
-  onClickSaveQuestion: PropTypes.func.isRequired,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewQuestionModal);
+export default NewQuestionModal;

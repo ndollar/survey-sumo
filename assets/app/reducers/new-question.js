@@ -13,8 +13,14 @@ const newQuestion = (state = initialState, action) => {
     case 'NEW_CHOICE':
       return Object.assign({}, state, {
         choices: [...state.choices, {
-          text: action.text
-        }]
+          text: action.text,
+          viewId: action.viewId,
+        }],
+      });
+
+    case 'REMOVE_CHOICE':
+      return Object.assign({}, state, {
+        choices: state.choices.filter(c => c.viewId !== action.viewId),
       });
     case 'SAVE_QUESTION':
       return {
@@ -26,8 +32,8 @@ const newQuestion = (state = initialState, action) => {
             id: action.id,
             text: state.text,
             choices: state.choices,
-          }
-        ]
+          },
+        ],
       };
     default:
       return state;

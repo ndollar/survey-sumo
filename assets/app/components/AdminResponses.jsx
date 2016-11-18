@@ -10,11 +10,11 @@ const AdminResponses = ({ adminResponses }) => {
     return (
       <div className="admin-responses">
         {adminResponses.map(response => (
-          <div className="question">
+          <div key={response.id} className="question">
             <div className="question-text">{response.text}</div>
             <div className="question-choices">
               {response.Choices.map(choice => (
-                <div className="choice-text">
+                <div key={choice.id} className="choice-text">
                   {choice.text} -
                   <span className="response-count">
                     {choice.Answers.length} responses

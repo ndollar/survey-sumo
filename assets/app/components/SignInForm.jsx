@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Auth } from 'app/api';
 import { saveToken } from 'app/helpers/auth';
 import { loginSuccess, authError } from 'app/actions/auth';
 import { browserHistory } from 'react-router';
+
+
+require('app/stylesheets/components/admin-responses.css');
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(email, password) {
@@ -29,43 +32,50 @@ const SignInForm = ({ onSubmit }) => {
   let email;
   let password;
   return (
-    <form
-      className="form-horizontal"
-      onSubmit={(e) => {
-        e.preventDefault();
-        onSubmit(email.value, password.value);
-      }}
-    >
-      <div className="form-group">
-        <label htmlFor="inputEmail3" className="col-sm-2 control-label">Email</label>
-        <div className="col-sm-10">
-          <input
-            ref={node => (email = node)}
-            type="email"
-            className="form-control"
-            id="inputEmail3"
-            placeholder="Email"
-          />
+    <div className="signin-form-container">
+      <form
+        className="form-horizontal"
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSubmit(email.value, password.value);
+        }}
+      >
+        <div className="form-group">
+          <label htmlFor="inputEmail3" className="col-sm-2 control-label">Email</label>
+          <div className="col-sm-10">
+            <input
+              ref={node => (email = node)}
+              type="email"
+              className="form-control"
+              id="inputEmail3"
+              placeholder="Email"
+            />
+          </div>
         </div>
-      </div>
-      <div className="form-group">
-        <label htmlFor="inputPassword3" className="col-sm-2 control-label">Password</label>
-        <div className="col-sm-10">
-          <input
-            ref={node => (password = node)}
-            type="password"
-            className="form-control"
-            id="inputPassword3"
-            placeholder="Password"
-          />
+        <div className="form-group">
+          <label htmlFor="inputPassword3" className="col-sm-2 control-label">Password</label>
+          <div className="col-sm-10">
+            <input
+              ref={node => (password = node)}
+              type="password"
+              className="form-control"
+              id="inputPassword3"
+              placeholder="Password"
+            />
+          </div>
         </div>
-      </div>
-      <div className="form-group">
-        <div className="col-sm-offset-2 col-sm-10">
-          <button type="submit" className="btn btn-default">Sign in</button>
+        <div className="form-group">
+          <div className="col-sm-offset-2 col-sm-10">
+            <button type="submit" className="btn btn-default">Sign in</button>
+          </div>
         </div>
-      </div>
-    </form>);
+      </form>
+    </div>
+  );
+};
+
+SignInForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(SignInForm);
