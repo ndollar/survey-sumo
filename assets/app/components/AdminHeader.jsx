@@ -1,12 +1,12 @@
 import React from 'react';
 import Logo from 'app/components/Logo';
-import AdminLink from 'app/components/AdminLink';
+import SignOutLink from 'app/components/SignOutLink';
 
 require('app/stylesheets/components/header-common.css');
 
 const Header = () => (
   <header>
-    <AdminLink />
+    <SignOutLink />
     <div id="header-logo-wrapper">
       <Logo />
     </div>

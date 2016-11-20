@@ -17,11 +17,11 @@ const mapDispatchToProps = dispatch => ({
 
 const AddChoice = ({ addChoice }) => (
   <div className="add-choice-wrapper">
-    <span>Add Choice: </span>
     <input
       className="form-control"
       name="add-choice"
       onKeyDown={addChoice}
+      placeholder="Add choice and press enter"
     />
   </div>
 );

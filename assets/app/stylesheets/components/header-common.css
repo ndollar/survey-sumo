@@ -4,7 +4,7 @@ header {
   padding-bottom: 16px;
 }
 
-#admin-link {
+.header-link {
   display: inline-block;
   float: right;
   padding: 12px;

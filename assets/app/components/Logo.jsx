@@ -5,7 +5,7 @@ require('app/stylesheets/components/logo.css');
 
 const Logo = () => (
   <span className="survey-sumo-logo">
-    <Link to="/">
+    <Link className="logo-link" to="/">
       <img
         alt="Sumo Logo"
         src="https://pbs.twimg.com/profile_images/1640023585/appsumo-twitter.png"

@@ -1,4 +1,3 @@
-import React from 'react'; // eslint no-unused-bars: 0
 import { Question } from 'app/api';
 import { setAdminResponses } from 'app/actions/admin-responses';
 import { setGuestQuestions } from 'app/actions/guest-questions';

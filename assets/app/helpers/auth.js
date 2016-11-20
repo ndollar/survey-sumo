@@ -10,8 +10,10 @@ export const getToken = () => (
 );
 
 export const clearToken = () => (
-  saveToken(undefined)
+  window.localStorage.removeItem(TOKEN_KEY)
 );
+
+export const signOut = clearToken;
 
 export const isLoggedIn = () => (typeof getToken() === 'string');
 

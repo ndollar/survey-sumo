@@ -1,12 +1,14 @@
 import React from 'react';
-import Header from 'app/components/Header';
 import SignInForm from 'app/components/SignInForm';
 
+require('app/stylesheets/components/signin.css');
 
-const Admin = () => (
+const SignIn = () => (
   <main>
-    <SignInForm />
+    <div className="signin-form-wrapper">
+      <SignInForm />
+    </div>
   </main>
 );
 
-export default Admin;
+export default SignIn;
