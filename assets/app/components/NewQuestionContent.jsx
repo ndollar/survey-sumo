@@ -11,7 +11,7 @@ require('app/stylesheets/components/new-question.css');
 
 
 const mapStateToProps = state => ({
-  newQuestion: state.newQuestion,
+  newQuestion: state.admin.newQuestion,
 });
 
 const submitValidator = (newQuestion) => (

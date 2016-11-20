@@ -25,7 +25,7 @@ const nextRandomQuestion = (availableQuestionIds, allQuestionsById) => {
 };
 
 
-const guestQuestions = (state = initialState, action) => {
+const questions = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_GUEST_QUESTIONS': {
       const allQuestions = action.guestQuestions;
@@ -33,7 +33,8 @@ const guestQuestions = (state = initialState, action) => {
       const availableQuestionIds = allQuestions.map(q => q.id);
       const initialized = true;
       const randomQuestion = nextRandomQuestion(
-        availableQuestionIds, allQuestionsById);
+        availableQuestionIds, allQuestionsById
+      );
       return {
         allQuestions,
         allQuestionsById,
@@ -55,4 +56,4 @@ const guestQuestions = (state = initialState, action) => {
   }
 };
 
-export default guestQuestions;
+export default questions;

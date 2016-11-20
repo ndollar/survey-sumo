@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 
 require('app/stylesheets/components/admin-responses.css');
 
-const mapStateToProps = ({ adminResponses }) => ({ adminResponses });
+const mapStateToProps = ({ admin: { responses } }) => ({ responses });
 
-const AdminResponses = ({ adminResponses }) => {
-  if (adminResponses) {
+const AdminResponses = ({ responses }) => {
+  if (responses) {
     return (
       <div className="admin-responses">
-        {adminResponses.map(response => (
+        {responses.map(response => (
           <div key={response.id} className="question">
             <div className="question-text">{response.text}</div>
             <div className="question-choices">
@@ -31,7 +31,7 @@ const AdminResponses = ({ adminResponses }) => {
 };
 
 AdminResponses.propTypes = {
-  adminResponses: PropTypes.arrayOf(PropTypes.shape({
+  responses: PropTypes.arrayOf(PropTypes.shape({
     Choices: PropTypes.arrayOf(PropTypes.shape({
       text: PropTypes.string.isRequired,
       Answers: PropTypes.array.isRequired,

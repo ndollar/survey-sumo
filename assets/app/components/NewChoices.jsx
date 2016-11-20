@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import AddChoice from 'app/components/AddChoice';
 
-const mapStateToProps = state => { choices: state.newQuestion.choices };
+const mapStateToProps = state => { choices: state.admin.newQuestion.choices };
 
 const NewChoices = ({ choices }) => (
   /*

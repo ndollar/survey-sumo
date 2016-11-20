@@ -1,6 +1,6 @@
-const setAdminResponses = (adminResponses) => ({
+const setAdminResponses = (responses) => ({
   type: 'SET_ADMIN_RESPONSES',
-  adminResponses,
+  responses,
 });
 
 export { setAdminResponses };

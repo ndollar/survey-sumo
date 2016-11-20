@@ -8,8 +8,8 @@ require('app/stylesheets/components/random-question.css');
 require('app/stylesheets/components/question-common.css');
 
 const mapStateToProps = (state) => ({
-  question: state.guestQuestions.randomQuestion,
-  initialized: state.guestQuestions.initialized,
+  question: state.guest.questions.randomQuestion,
+  initialized: state.guest.questions.initialized,
 });
 
 const mapDispatchToProps = (dispatch) => ({
