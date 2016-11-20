@@ -22,14 +22,13 @@ const newQuestion = (state = initialState, action) => {
       return Object.assign({}, state, {
         choices: state.choices.filter(c => c.viewId !== action.viewId),
       });
-    case 'SAVE_QUESTION':
+    case 'CLEAR_QUESTION':
       return {
         text: initialState.text,
         choices: initialState.choices,
-        fetching: [
+        fetching: [ // TODO: Did I end up using 'fetching'?
           ...state.fetching,
           {
-            id: action.id,
             text: state.text,
             choices: state.choices,
           },

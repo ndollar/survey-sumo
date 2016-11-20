@@ -1,49 +1,51 @@
+// TODO: Why is this file not in a sub folder?
 import fetch from 'isomorphic-fetch';
 import { getToken } from 'app/helpers/auth';
 
-const doPost = (url, data) => {
-  return fetch(url, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    credentials: 'same-origin'
-  });
-}
-
-const doAuthPost = (url, data) => {
-  return fetch(url, {
+// Seems al ittle redundant d[oAuthGet, doGet], how can I refactor?
+const doPost = (url, data) => (
+  fetch(url, {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `${getToken()}`,
     },
-    credentials: 'same-origin'
-  });
-}
+    credentials: 'same-origin',
+  })
+);
 
-const doGet = (url) => {
-  return fetch(url, {
-    method: 'GET',
+const doAuthPost = (url, data) => (
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      Authorization: `${getToken()}`,
     },
-    credentials: 'same-origin'
-  });
-}
+    credentials: 'same-origin',
+  })
+);
 
-const doAuthGet = (url) => {
-  return fetch(url, {
+const doGet = (url) => (
+  fetch(url, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `${getToken()}`,
     },
-    credentials: 'same-origin'
-  });
-}
+    credentials: 'same-origin',
+  })
+);
+
+const doAuthGet = (url) => (
+  fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `${getToken()}`,
+    },
+    credentials: 'same-origin',
+  })
+);
 
 export const Question = {
   create({ text, choices }) {

@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { saveQuestion } from 'app/actions/new-question';
-import { Question } from 'app/api';
 import NewQuestionText from 'app/components/NewQuestionText';
 import AddChoice from 'app/components/AddChoice';
 import NewQuestionChoices from 'app/components/NewQuestionChoices';
@@ -20,15 +19,7 @@ const submitValidator = (newQuestion) => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  onClickSaveQuestion: newQuestion => (
-    () => {
-      const action = saveQuestion();
-      dispatch(action);
-      // TODO: Handle response
-      Question.create(newQuestion)
-        .then();
-    }
-  ),
+  onClickSaveQuestion: () => dispatch(saveQuestion()),
 });
 
 const NewQuestionContent = ({ newQuestion, onClickSaveQuestion }) => (
@@ -43,7 +34,7 @@ const NewQuestionContent = ({ newQuestion, onClickSaveQuestion }) => (
     <div className="modal-footer">
       <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
       <NewQuestionSubmit
-        onClick={onClickSaveQuestion(newQuestion)}
+        onClick={onClickSaveQuestion}
         disabled={submitValidator(newQuestion)}
       />
     </div>

@@ -10,7 +10,6 @@ const Logo = () => (
         alt="Sumo Logo"
         src="https://pbs.twimg.com/profile_images/1640023585/appsumo-twitter.png"
         height="160"
-        align="middle"
       />
       <span className="survey-sumo-name">Survey Sumo</span>
     </Link>

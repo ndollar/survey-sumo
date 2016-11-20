@@ -1,7 +1,10 @@
+import { answeredQuestions } from 'app/helpers/storage/answered-questions';
+
 const initialState = {
   allQuestions: [],
   allQuestionsById: [],
   availableQuestionIds: [],
+  answeredQuestionIds: new Set(answeredQuestions()),
   randomQuestion: null,
   initialized: false,
 };
@@ -28,9 +31,18 @@ const nextRandomQuestion = (availableQuestionIds, allQuestionsById) => {
 const questions = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_GUEST_QUESTIONS': {
-      const allQuestions = action.guestQuestions;
+      const allQuestions = [
+        ...state.allQuestions,
+        ...action.guestQuestions,
+      ];
       const allQuestionsById = buildAllQuestionsById(allQuestions);
-      const availableQuestionIds = allQuestions.map(q => q.id);
+      const answeredQuestionIds = state.answeredQuestionIds;
+      const availableQuestionIds = [
+        ...state.availableQuestionIds,
+        ...action.guestQuestions
+          .map(q => q.id)
+          .filter(id => !answeredQuestionIds.has(id)),
+      ];
       const initialized = true;
       const randomQuestion = nextRandomQuestion(
         availableQuestionIds, allQuestionsById
@@ -39,6 +51,7 @@ const questions = (state = initialState, action) => {
         allQuestions,
         allQuestionsById,
         availableQuestionIds,
+        answeredQuestionIds,
         initialized,
         randomQuestion,
       };
@@ -46,8 +59,21 @@ const questions = (state = initialState, action) => {
     case 'QUESTION_ANSWERED': {
       const availableQuestionIds = state.availableQuestionIds
         .filter(i => (i !== action.questionId));
+      const answeredQuestionIds = new Set([
+        ...state.answeredQuestionIds,
+        action.questionId,
+      ]);
       return Object.assign({}, state, {
         availableQuestionIds,
+        answeredQuestionIds,
+        randomQuestion: nextRandomQuestion(availableQuestionIds, state.allQuestionsById),
+      });
+    }
+    case 'CLEAR_SAVED_QUESTIONS': {
+      const availableQuestionIds = state.allQuestions.map(q => q.id);
+      return Object.assign({}, state, {
+        availableQuestionIds,
+        answeredQuestionIds: new Set(),
         randomQuestion: nextRandomQuestion(availableQuestionIds, state.allQuestionsById),
       });
     }

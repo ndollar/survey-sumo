@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Answer } from 'app/api';
-import { questionAnswered } from 'app/actions/guest-questions';
+import { questionAnswered, clearSavedQuestions } from 'app/actions/guest-questions';
 import _ from 'underscore';
 
 require('app/stylesheets/components/random-question.css');
@@ -14,26 +13,39 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   saveAnswer(questionId, choiceId) {
-    if (choiceId) {
-      Answer.create(choiceId)
-        .then(() => {
-          dispatch(questionAnswered(questionId, choiceId));
-        });
-    }
+    dispatch(questionAnswered(questionId, choiceId));
+  },
+  resetOnClick(e) {
+    e.preventDefault();
+    dispatch(clearSavedQuestions());
   },
 });
 
 // TODO: Make simpler sub components for each
-const RandomQuestion = ({ question, initialized, saveAnswer }) => {
+const RandomQuestion = ({ question, initialized, saveAnswer, resetOnClick }) => {
   let choiceId;
   const onChoiceClick = (e) => (choiceId = e.target.value);
 
   if (!initialized) {
-    return (<div>Loading Questions</div>);
+    return (
+      <div className="alt-message">
+        Loading Questions
+      </div>
+    );
   }
 
   if (!question) {
-    return (<div>No Questions</div>);
+    return (
+      <div className="alt-message">
+        No questions to answer
+        <span className="reset-questions">
+          <a
+            href="#"
+            onClick={resetOnClick}
+          >(Reset)</a>
+        </span>
+      </div>
+    );
   }
   choiceId = _.first(question.Choices).id;
   return (
@@ -75,6 +87,7 @@ RandomQuestion.propTypes = {
   }),
   initialized: PropTypes.bool.isRequired,
   saveAnswer: PropTypes.func.isRequired,
+  resetOnClick: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RandomQuestion);

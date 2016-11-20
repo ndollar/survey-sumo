@@ -1,5 +1,5 @@
 import React from 'react';
-import NewQuestionContext from 'app/components/NewQuestionContent';
+import NewQuestionContent from 'app/components/NewQuestionContent';
 
 const NewQuestionModal = () => (
   <div className="new-question-container">
@@ -27,7 +27,7 @@ const NewQuestionModal = () => (
             ><span aria-hidden="true">&times;</span></button>
             <h4 className="modal-title" id="myModalLabel">New Question</h4>
           </div>
-          <NewQuestionContext />
+          <NewQuestionContent />
         </div>
       </div>
     </div>

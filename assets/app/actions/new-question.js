@@ -1,3 +1,6 @@
+import { Question } from 'app/api';
+import { fetchAdminResponses } from 'app/actions/admin-responses';
+
 const setQuestionText = (value) => ({
   type: 'SET_QUESTION_TEXT',
   text: value,
@@ -15,10 +18,13 @@ const removeChoice = (viewId) => ({
   viewId,
 });
 
-let asyncId = 0; // TODO: Is this used?
-const saveQuestion = () => ({
-  type: 'SAVE_QUESTION',
-  id: (asyncId++).toString(),
-});
+// TODO: Handle response
+const saveQuestion = () => (dispatch, getState) => {
+  Question.create(getState().admin.newQuestion)
+  .then(() => {
+    dispatch(fetchAdminResponses());
+    dispatch({ type: 'CLEAR_QUESTION' });
+  });
+};
 
 export { setQuestionText, newChoice, saveQuestion, removeChoice };
