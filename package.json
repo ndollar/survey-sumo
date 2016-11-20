@@ -9,6 +9,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "mocha",
+    "bundle": "webpack --progress",
+    "dbmigrate": "sequelize db:migrate",
     "heroku-postbuild": "webpack --progress --colors"
   },
   "author": "Nick Dollarhide",
