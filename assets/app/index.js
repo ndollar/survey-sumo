@@ -5,12 +5,21 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
+import socketIo from 'socket.io-client';
 
 import reducers from 'app/reducers';
 import GuestApp from 'app/components/GuestApp';
 import Admin from 'app/components/Admin';
 import SignIn from 'app/components/SignIn';
 import onEnter from 'app/helpers/on-enter';
+
+const socket = socketIo();
+socket.on('connect', () => {});
+socket.on('hello', (world) => {
+  console.log(world);
+});
+
+socket.emit('hey', { ho: 'lets go' });
 
 const reduxLogger = createLogger();
 
