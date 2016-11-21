@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { newChoice } from 'app/actions/new-question';
+import { newChoice } from 'app/actions/admin/new-question';
 
 const ENTER_KEY = 13;
 

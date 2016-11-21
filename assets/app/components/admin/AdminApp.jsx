@@ -1,17 +1,17 @@
 import React from 'react';
-import AdminHeader from 'app/components/AdminHeader';
+import AdminHeader from 'app/components/admin/AdminHeader';
 import ErrorBlock from 'app/components/ErrorBlock';
-import NewQuestionModal from 'app/components/NewQuestionModal';
-import AdminResponses from 'app/components/AdminResponses';
+import NewQuestionModal from 'app/components/admin/NewQuestionModal';
+import AdminResponses from 'app/components/admin/AdminResponses';
 
-require('app/stylesheets/components/admin.css');
+require('app/stylesheets/components/admin/admin.css');
 
 // TODO: I'm not crazy about this solution, having to set error messages to '';
 const messageFromState = (state) => (
   state.admin.newQuestion.saveError.error
 );
 
-const Admin = () => (
+const AdminApp = () => (
   <main>
     <AdminHeader />
     <div>
@@ -26,4 +26,4 @@ const Admin = () => (
   </main>
 );
 
-export default Admin;
+export default AdminApp;

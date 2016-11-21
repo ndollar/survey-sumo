@@ -1,5 +1,5 @@
 import React from 'react';
-import NewQuestionContent from 'app/components/NewQuestionContent';
+import NewQuestionContent from 'app/components/admin/NewQuestionContent';
 
 const NewQuestionModal = () => (
   <div className="new-question-container">

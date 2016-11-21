@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { saveQuestion } from 'app/actions/new-question';
-import NewQuestionText from 'app/components/NewQuestionText';
-import AddChoice from 'app/components/AddChoice';
-import NewQuestionChoices from 'app/components/NewQuestionChoices';
-import NewQuestionSubmit from 'app/components/NewQuestionSubmit';
+import { saveQuestion } from 'app/actions/admin/new-question';
+import NewQuestionText from 'app/components/admin/NewQuestionText';
+import AddChoice from 'app/components/admin/AddChoice';
+import NewQuestionChoices from 'app/components/admin/NewQuestionChoices';
+import NewQuestionSubmit from 'app/components/admin/NewQuestionSubmit';
 
-require('app/stylesheets/components/new-question.css');
+require('app/stylesheets/components/admin/new-question.css');
 
 
 const mapStateToProps = state => ({

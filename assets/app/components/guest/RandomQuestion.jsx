@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { questionAnswered, clearSavedQuestions } from 'app/actions/guest-questions';
+import { questionAnswered, clearSavedQuestions } from 'app/actions/guest/questions';
 import _ from 'underscore';
 
-require('app/stylesheets/components/random-question.css');
+require('app/stylesheets/components/guest/random-question.css');
 require('app/stylesheets/components/question-common.css');
 
 const mapStateToProps = (state) => ({

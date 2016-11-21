@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from 'app/components/Logo';
-import SignOutLink from 'app/components/SignOutLink';
+import SignOutLink from 'app/components/auth/SignOutLink';
 
 require('app/stylesheets/components/header-common.css');
 

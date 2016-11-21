@@ -1,4 +1,4 @@
-import { fetchAdminResponses } from 'app/actions/admin-responses';
+import { fetchAdminResponses } from 'app/actions/admin/responses';
 import { isLoggedIn } from 'app/helpers/auth';
 
 export const addListeners = (socket, dispatch) => {

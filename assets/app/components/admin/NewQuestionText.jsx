@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { setQuestionText } from 'app/actions/new-question';
+import { setQuestionText } from 'app/actions/admin/new-question';
 
 const mapDispatchToProps = dispatch => ({
   saveQuestionText: event => dispatch(setQuestionText(event.target.value)),

@@ -1,5 +1,5 @@
 import { Question } from 'app/api';
-import { fetchAdminResponses } from 'app/actions/admin-responses';
+import { fetchAdminResponses } from 'app/actions/admin/responses';
 import { checkStatus } from 'app/helpers/fetch-response';
 
 const setQuestionText = (value) => ({

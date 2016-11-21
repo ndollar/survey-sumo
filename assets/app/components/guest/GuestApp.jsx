@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from 'app/components/Header';
-import RandomQuestion from 'app/components/RandomQuestion';
+import RandomQuestion from 'app/components/guest/RandomQuestion';
 import ErrorBlock from 'app/components/ErrorBlock';
 
 require('app/stylesheets/components/question-common.css');

@@ -7,7 +7,7 @@ import { browserHistory } from 'react-router';
 import { checkStatus } from 'app/helpers/fetch-response';
 import ErrorBlock from 'app/components/ErrorBlock';
 
-require('app/stylesheets/components/signin-form.css');
+require('app/stylesheets/components/auth/signin-form.css');
 
 const messageFromState = state => (state.auth.errorResponse.error);
 

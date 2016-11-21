@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { removeChoice } from 'app/actions/new-question';
+import { removeChoice } from 'app/actions/admin/new-question';
 
 const mapDispatchToProps = dispatch => ({
   deleteChoice(choiceId) {

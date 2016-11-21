@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-require('app/stylesheets/components/admin-responses.css');
+require('app/stylesheets/components/admin/responses.css');
 require('app/stylesheets/components/question-common.css');
 
 const mapStateToProps = ({ admin: { responses } }) => ({ responses });

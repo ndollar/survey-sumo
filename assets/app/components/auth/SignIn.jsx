@@ -1,7 +1,7 @@
 import React from 'react';
-import SignInForm from 'app/components/SignInForm';
+import SignInForm from 'app/components/auth/SignInForm';
 
-require('app/stylesheets/components/signin.css');
+require('app/stylesheets/components/auth/signin.css');
 
 const SignIn = () => (
   <main>
