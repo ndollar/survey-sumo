@@ -14,6 +14,8 @@ import SignIn from 'app/components/SignIn';
 import onEnter from 'app/helpers/on-enter';
 import { addListeners } from 'app/helpers/socket-listeners';
 
+require('app/stylesheets/base.css');
+
 const reduxLogger = createLogger();
 
 const store = createStore(

@@ -1,6 +1,7 @@
 .new-question-wrapper {
-  float: right;
-  margin-right: 8%;
+  width: 147px;
+  margin: auto;
+  padding-top: 20px;
 }
 
 .error-block-container {

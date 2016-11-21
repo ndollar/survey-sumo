@@ -2,13 +2,14 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 require('app/stylesheets/components/admin-responses.css');
+require('app/stylesheets/components/question-common.css');
 
 const mapStateToProps = ({ admin: { responses } }) => ({ responses });
 
 const AdminResponses = ({ responses }) => {
-  if (responses) {
+  if (responses.length > 0) {
     return (
-      <div className="admin-responses">
+      <div className="questions-container">
         {responses.map(response => (
           <div key={response.id} className="question">
             <div className="question-text">{response.text}</div>
@@ -27,7 +28,7 @@ const AdminResponses = ({ responses }) => {
       </div>
     );
   }
-  return (<div className="admin-responses-loading">Loading responses</div>);
+  return (<div className="alt-message">Loading responses</div>);
 };
 
 AdminResponses.propTypes = {
