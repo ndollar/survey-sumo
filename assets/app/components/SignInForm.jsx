@@ -4,36 +4,41 @@ import { Auth } from 'app/api';
 import { saveToken } from 'app/helpers/auth';
 import { loginSuccess, authError } from 'app/actions/auth';
 import { browserHistory } from 'react-router';
-
+import { checkStatus } from 'app/helpers/fetch-response';
+import ErrorBlock from 'app/components/ErrorBlock';
 
 require('app/stylesheets/components/signin-form.css');
+
+const messageFromState = state => (state.auth.errorResponse.error);
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(email, password) {
     Auth.login(email, password)
-      .then(response => {
-        if (!response.ok) {
-          throw Error(response.statusText);
-        }
-        return response;
-      })
-      .then(response => response.json())
-      .then((json) => {
+      .then(checkStatus)
+      .then(json => {
         saveToken(dispatch(loginSuccess(json)).token.token);
         browserHistory.push('/admin');
       })
       .catch(error => {
-        dispatch(authError(error));
+        if (error.response) {
+          error.response
+          .json().then(err => {
+            dispatch(authError(err));
+          });
+        } else {
+          throw error;
+        }
       });
   },
 });
 
 const SignInForm = ({ onSubmit }) => {
-  let email;
-  let password;
+  let email = '';
+  let password = '';
   return (
     <div className="signin-form-container">
       <h3 className="signin-title">Sign In</h3>
+      <ErrorBlock messageFromState={messageFromState} />
       <form
         className="form-horizontal"
         onSubmit={(e) => {
@@ -48,6 +53,7 @@ const SignInForm = ({ onSubmit }) => {
             className="form-control"
             id="inputEmail3"
             placeholder="Email"
+            required
           />
         </div>
         <div className="form-group">
@@ -57,10 +63,14 @@ const SignInForm = ({ onSubmit }) => {
             className="form-control"
             id="inputPassword3"
             placeholder="Password"
+            required
           />
         </div>
         <div className="form-group">
-          <button type="submit" className="btn btn-primary btn-block">Sign in</button>
+          <button
+            type="submit"
+            className="btn btn-primary btn-block"
+          >Sign in</button>
         </div>
       </form>
     </div>

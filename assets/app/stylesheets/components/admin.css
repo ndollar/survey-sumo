@@ -1,3 +1,9 @@
 .new-question-wrapper {
   float: right;
+  margin-right: 8%;
+}
+
+.error-block-container {
+  text-align: center;
+  font-size: 18px;
 }

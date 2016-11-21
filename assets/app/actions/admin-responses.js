@@ -13,13 +13,8 @@ const questionsWithAnswers = dispatch => (
 );
 
 // TODO: Replace polling with socket
-let interval;
 const fetchAdminResponses = () => dispatch => {
-  clearInterval(interval);
   questionsWithAnswers(dispatch);
-  interval = setInterval(() => (
-    questionsWithAnswers(dispatch)
-  ), 5000);
 };
 
 export { setAdminResponses, fetchAdminResponses };

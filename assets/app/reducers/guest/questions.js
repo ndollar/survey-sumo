@@ -7,6 +7,7 @@ const initialState = {
   answeredQuestionIds: new Set(answeredQuestions()),
   randomQuestion: null,
   initialized: false,
+  answerError: { error: '' },
 };
 
 const buildAllQuestionsById = (allQuestions) => {
@@ -47,14 +48,14 @@ const questions = (state = initialState, action) => {
       const randomQuestion = nextRandomQuestion(
         availableQuestionIds, allQuestionsById
       );
-      return {
+      return Object.assign({}, state, {
         allQuestions,
         allQuestionsById,
         availableQuestionIds,
         answeredQuestionIds,
         initialized,
         randomQuestion,
-      };
+      });
     }
     case 'QUESTION_ANSWERED': {
       const availableQuestionIds = state.availableQuestionIds
@@ -77,6 +78,14 @@ const questions = (state = initialState, action) => {
         randomQuestion: nextRandomQuestion(availableQuestionIds, state.allQuestionsById),
       });
     }
+    case 'SAVE_ANSWER_ERROR':
+      return Object.assign({}, state, {
+        answerError: action.error,
+      });
+    case 'CLEAR_SAVE_ANSWER_ERROR':
+      return Object.assign({}, state, {
+        answerError: initialState.answerError,
+      });
     default:
       return state;
   }

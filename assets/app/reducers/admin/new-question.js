@@ -1,7 +1,7 @@
 const initialState = {
   text: '',
   choices: [],
-  fetching: [],
+  saveError: { error: '' },
 };
 
 const newQuestion = (state = initialState, action) => {
@@ -17,23 +17,20 @@ const newQuestion = (state = initialState, action) => {
           viewId: action.viewId,
         }],
       });
-
     case 'REMOVE_CHOICE':
       return Object.assign({}, state, {
         choices: state.choices.filter(c => c.viewId !== action.viewId),
       });
     case 'CLEAR_QUESTION':
-      return {
-        text: initialState.text,
-        choices: initialState.choices,
-        fetching: [ // TODO: Did I end up using 'fetching'?
-          ...state.fetching,
-          {
-            text: state.text,
-            choices: state.choices,
-          },
-        ],
-      };
+      return initialState;
+    case 'SAVE_QUESTION_ERROR':
+      return Object.assign({}, state, {
+        saveError: action.error,
+      });
+    case 'CLEAR_NEW_QUESTION_ERRORS':
+      return Object.assign({}, state, {
+        saveError: initialState.saveError,
+      });
     default:
       return state;
   }

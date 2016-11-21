@@ -8,4 +8,10 @@ const authError = response => ({
   response,
 });
 
-export { loginSuccess, authError };
+const clearAuthError = response => ({
+  type: 'CLEAR_AUTH_ERROR',
+  response,
+});
+
+
+export { loginSuccess, authError, clearAuthError };
