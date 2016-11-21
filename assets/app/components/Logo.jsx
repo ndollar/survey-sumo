@@ -8,7 +8,7 @@ const Logo = () => (
     <Link className="logo-link" to="/">
       <img
         alt="Sumo Logo"
-        src="https://pbs.twimg.com/profile_images/1640023585/appsumo-twitter.png"
+        src="/images/appsumo-twitter.png"
         height="160"
       />
       <span className="survey-sumo-name">Survey Sumo</span>
