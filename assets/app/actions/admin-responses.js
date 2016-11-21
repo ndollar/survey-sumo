@@ -12,7 +12,6 @@ const questionsWithAnswers = dispatch => (
     })
 );
 
-// TODO: Replace polling with socket
 const fetchAdminResponses = () => dispatch => {
   questionsWithAnswers(dispatch);
 };
