@@ -5,6 +5,13 @@ var errorResponse = require('./error-response');
 
 // TODO: Test me!
 
+/*
+ * Hardcoding user information here because:
+ * - It would have to be hard coded in a db:seeder anyway
+ * - Reduces a network call and point of failure
+ * - There is a only one user, which is not referenced in the
+ *   data model.
+ */
 var User = {
   username: 'nick@sumo.me',
   password: '$2a$10$QHtfxPynby8Pm34jmc1s3ed9C.ZzQcRnHmA3Kzr8g2lumdTpJA1du'

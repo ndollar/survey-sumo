@@ -2,6 +2,10 @@
   "name": "survey-sumo",
   "version": "1.0.0",
   "description": "Create surveys!",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ndollar/survey-sumo.git"
+  },
   "engines": {
     "node": "0.10.46"
   },

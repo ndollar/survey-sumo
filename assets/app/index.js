@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
 import socketIo from 'socket.io-client';
 
@@ -16,11 +15,9 @@ import { addListeners } from 'app/helpers/socket-listeners';
 
 require('app/stylesheets/base.css');
 
-const reduxLogger = createLogger();
-
 const store = createStore(
   reducers,
-  applyMiddleware(reduxLogger, thunk)
+  applyMiddleware(thunk)
 );
 
 const socket = socketIo();
