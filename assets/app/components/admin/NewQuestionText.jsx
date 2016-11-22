@@ -7,7 +7,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const NewQuestionText = ({ defaultValue, saveQuestionText }) => {
-  // TODO: Figure out defaultValue
   let value;
   return (
     <div className="new-question-input">

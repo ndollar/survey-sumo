@@ -1,8 +1,6 @@
 var jwt = require('jsonwebtoken');
 var secret = require('../config').secret;
 
-// TODO: Test me!
-
 module.exports = {
   generateToken: function (options, callback) {
     jwt.sign(options, secret, {

@@ -1,4 +1,3 @@
-
 module.exports = {
-  secret: 'sumomeistheplacetobe',
+  secret: 'sumomeistheplacetobe'
 };

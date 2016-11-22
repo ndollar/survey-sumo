@@ -1,6 +1,6 @@
 var chai = require('chai');
 var sinonChai = require('sinon-chai');
-var answersGenerator = require('../answers'); // TODO: Use rfr
+var answersGenerator = require('../answers');
 var requestMock = require('./request.mock');
 var createModels = require('./models.mock').createModels;
 var expect = chai.expect;

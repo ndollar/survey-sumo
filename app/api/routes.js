@@ -8,7 +8,6 @@ var errorResponse = require('./error-response');
 
 var validate = function (request, response, success) {
   var errors = request.validationErrors(true);
-  // TODO: Handle auth error
   if (errors) {
     errorResponse.preCondition(response, errors);
     return;
@@ -23,7 +22,7 @@ var router = express.Router();
 router.post('/questions', function (request, response) {
   request.checkBody('text', 'Question text is required').notEmpty();
   request.checkHeaders('authorization', 'Authorization header is required')
-    .notEmpty().isAuthenticated(); // TODO: Update reponse code for this error
+    .notEmpty().isAuthenticated();
   validate(request, response, Questions.create);
 });
 

@@ -1,3 +1,5 @@
+/* eslint-disable */
+// ignoring generating code
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {

@@ -68,7 +68,6 @@ describe('#Questions', function () {
   });
 
   describe('#findAll', function () {
-
     beforeEach(questionsBeforeEach);
 
     it('should call question find all and respond with json', function () {

@@ -3,8 +3,6 @@ var logger = require('winston');
 var auth = require('../helpers/auth');
 var errorResponse = require('./error-response');
 
-// TODO: Test me!
-
 /*
  * Hardcoding user information here because:
  * - It would have to be hard coded in a db:seeder anyway

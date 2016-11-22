@@ -6,7 +6,6 @@ import AdminResponses from 'app/components/admin/AdminResponses';
 
 require('app/stylesheets/components/admin/admin.css');
 
-// TODO: I'm not crazy about this solution, having to set error messages to '';
 const messageFromState = (state) => (
   state.admin.newQuestion.saveError.error
 );

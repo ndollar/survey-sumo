@@ -21,7 +21,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-// TODO: Make simpler sub components for each
 const RandomQuestion = ({ question, initialized, saveAnswer, resetOnClick }) => {
   let choiceId;
   const onChoiceClick = (e) => (choiceId = e.target.value);

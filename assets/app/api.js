@@ -1,8 +1,6 @@
-// TODO: Why is this file not in a sub folder?
 import fetch from 'isomorphic-fetch';
 import { getToken } from 'app/helpers/auth';
 
-// TODO: Seems al ittle redundant d[oAuthGet, doGet], how can I refactor?
 const doPost = (url, data) => (
   fetch(url, {
     method: 'POST',
