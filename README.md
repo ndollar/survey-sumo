@@ -29,18 +29,14 @@ To run locally:
 1. Clone the repository  
 `$ git clone git@github.com:ndollar/survey-sumo.git`
 
-2. Install NPM dependencies  
+2. Install NPM dependencies (**Note:** my local NPM install takes > 10 minutes.)  
 `$ npm install`
-**Note:**
-- My local NPM install takes > 10 minutes.
-Probably because I don't have an SSD and were using NPM 2.x.
-- There are several NPM warnings because the packages want a newer version of Node
 
 4. Configure MySQL database
-- Login to mysql and create `survey_sumo` database
-`$ mysql -u <username> -p`
-`mysql> create database survey_sumo;`
-- Update `/app/db/config/config.js` "development" with username and password
+  - Login to mysql and create `survey_sumo` database  
+  `$ mysql -u <username> -p`  
+  `mysql> create database survey_sumo;`  
+  - Update `/app/db/config/config.js` "development" with your username and password  
 
 5. Run database migrations  
 `$ npm run dbmigrate`
