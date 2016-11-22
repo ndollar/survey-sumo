@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { questionAnswered, clearSavedQuestions } from 'app/actions/guest/questions';
+import { questionAnswered } from 'app/actions/guest/questions';
 import _ from 'underscore';
+import AnswerChoice from 'app/components/guest/AnswerChoice';
+import NoMoreQuestions from 'app/components/guest/NoMoreQuestions';
 
 require('app/stylesheets/components/guest/random-question.css');
 require('app/stylesheets/components/question-common.css');
@@ -15,16 +17,11 @@ const mapDispatchToProps = (dispatch) => ({
   saveAnswer(questionId, choiceId) {
     dispatch(questionAnswered(questionId, choiceId));
   },
-  resetOnClick(e) {
-    e.preventDefault();
-    dispatch(clearSavedQuestions());
-  },
 });
 
-const RandomQuestion = ({ question, initialized, saveAnswer, resetOnClick }) => {
+const RandomQuestion = ({ question, initialized, saveAnswer }) => {
   let choiceId;
   const onChoiceClick = (e) => (choiceId = e.target.value);
-
   if (!initialized) {
     return (
       <div className="alt-message">
@@ -32,19 +29,8 @@ const RandomQuestion = ({ question, initialized, saveAnswer, resetOnClick }) => 
       </div>
     );
   }
-
   if (!question) {
-    return (
-      <div className="alt-message">
-        No questions to answer
-        <span className="reset-questions">
-          <a
-            href="#"
-            onClick={resetOnClick}
-          >(Reset)</a>
-        </span>
-      </div>
-    );
+    return <NoMoreQuestions />;
   }
   choiceId = _.first(question.Choices).id;
   return (
@@ -52,19 +38,12 @@ const RandomQuestion = ({ question, initialized, saveAnswer, resetOnClick }) => 
       <div className="question-text">{question.text}</div>
       <div className="question-choices">
         {question.Choices.map(choice => (
-          <div key={choice.id} className="question-choice">
-            <label className="question-choice-label">
-              <input
-                defaultChecked={choice.id === choiceId}
-                className="question-choice-radio"
-                name="question-choice"
-                type="radio"
-                onClick={onChoiceClick}
-                defaultValue={choice.id}
-              />
-              <span className="choice-text">{choice.text}</span>
-            </label>
-          </div>
+          <AnswerChoice
+            key={choice.id}
+            onClick={onChoiceClick}
+            choice={choice}
+            defaultChecked={choice.id === choiceId}
+          />
         ))}
       </div>
       <div className="random-question-submit-wrapper">
@@ -86,7 +65,6 @@ RandomQuestion.propTypes = {
   }),
   initialized: PropTypes.bool.isRequired,
   saveAnswer: PropTypes.func.isRequired,
-  resetOnClick: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(RandomQuestion);

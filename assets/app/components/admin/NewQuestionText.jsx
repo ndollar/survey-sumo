@@ -3,16 +3,21 @@ import { connect } from 'react-redux';
 import { setQuestionText } from 'app/actions/admin/new-question';
 
 const mapDispatchToProps = dispatch => ({
-  saveQuestionText: event => dispatch(setQuestionText(event.target.value)),
+  saveQuestionText: event => {
+    dispatch(setQuestionText(event.target.value));
+  },
 });
 
-const NewQuestionText = ({ defaultValue, saveQuestionText }) => {
-  let value;
+let input;
+const NewQuestionText = ({ saveQuestionText, defaultValue }) => {
+  if (input) {
+    input.value = defaultValue;
+  }
   return (
     <div className="new-question-input">
       <input
-        value={value}
-        onChange={e => (value = e.target.value)}
+        ref={node => (input = node)}
+        defaultValue={defaultValue}
         type="text"
         className="form-control"
         onBlur={saveQuestionText}
